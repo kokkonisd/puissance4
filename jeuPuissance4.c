@@ -40,12 +40,11 @@ bool estCoupGagnant (int choixJoueur)
 	int posY = NB_LIG_GRILLE_VUES - nbDeJetonsColonne(choixJoueur);
 
 	// position absolue (position dans la grille globale, le point (0,0) se trouve en haut à gauche)
-	int absPosX = DECALAGE + choixJoueur;
-	int absPosY = DECALAGE + NB_LIG_GRILLE_VUES - nbDeJetonsColonne(choixJoueur);
+	int absPosX = DECALAGE + posX;
+	int absPosY = DECALAGE + posY;
 
 	// la valeur de la case du dernier coup du jeu
 	int val = demanderCouleurDeLaCaseXY(posX, posY);
-	int dist;
 
 	/* les entiers du tableau correspondent à :
 	0 : gauche -> droite
@@ -53,12 +52,14 @@ bool estCoupGagnant (int choixJoueur)
 	2 : diagonale-haut-gauche -> diagonale-bas-droite
 	3 : diagonale-bas-gauche -> diagonale-haut-droite */
 	int jetons[] = {0, 0, 0, 0};
-	int i, j;
-
-	// gauche -> droite
-	i = absPosY;
-	for (j = absPosX - (CONFIGURATION_GAGNANTE - 1); j <= absPosX + (CONFIGURATION_GAGNANTE - 1); j++) {
-		if (grille[i][j] == val) {
+	int i;
+	
+	// pour les diagonales
+	int dist = CONFIGURATION_GAGNANTE - 1;
+	
+	for (i = absPosX - (CONFIGURATION_GAGNANTE - 1); i <= absPosX + (CONFIGURATION_GAGNANTE - 1); i++) {
+		// gauche -> droite
+		if (grille[absPosY][i] == val) {
 			jetons[0]++;
 
 		/* si le nombre des jetons sur la ligne est < à la configuration gagnante
@@ -67,43 +68,31 @@ bool estCoupGagnant (int choixJoueur)
 		} else if (jetons[0] < CONFIGURATION_GAGNANTE) {
 			jetons[0] = 0;
 		}
-	}
 
-	// haut -> bas
-	j = absPosX;
-	for (i = absPosY - (CONFIGURATION_GAGNANTE - 1); i <= absPosY + (CONFIGURATION_GAGNANTE - 1); i++) {
-		if (grille[i][j] == val) {
-			jetons[1]++;
-		} else if (jetons[1] < CONFIGURATION_GAGNANTE) {
-			jetons[1] = 0;
-		}
-	}
-
-	// diagonales
-	dist = CONFIGURATION_GAGNANTE - 1;
-	i = absPosY;
-
-	// diagonale-haut-gauche -> diagonale-bas-droite
-	for (j = absPosX - (CONFIGURATION_GAGNANTE - 1); j <= absPosX + (CONFIGURATION_GAGNANTE - 1); j++) {
-		if (grille[i - dist][j] == val) {
+		// diagonale-haut-gauche -> diagonale-bas-droite
+		if (grille[absPosY - dist][i] == val) {
 			jetons[2]++;
 		} else if (jetons[2] < CONFIGURATION_GAGNANTE) {
 			jetons[2] = 0;
 		}
 
-		dist--;
-	}
-
-	// diagonale-bas-gauche -> diagonale-haut-droite
-	dist = - (CONFIGURATION_GAGNANTE - 1);
-	for (j = absPosX - (CONFIGURATION_GAGNANTE - 1); j <= absPosX + (CONFIGURATION_GAGNANTE - 1); j++) {
-		if (grille[i - dist][j] == val) {
+		// diagonale-bas-gauche -> diagonale-haut-droite
+		if (grille[absPosY + dist][i] == val) {
 			jetons[3]++;
 		} else if (jetons[3] < CONFIGURATION_GAGNANTE) {
 			jetons[3] = 0;
 		}
 
-		dist++;
+		dist--;
+	}
+
+	// haut -> bas
+	for (i = absPosY - (CONFIGURATION_GAGNANTE - 1); i <= absPosY + (CONFIGURATION_GAGNANTE - 1); i++) {
+		if (grille[i][absPosX] == val) {
+			jetons[1]++;
+		} else if (jetons[1] < CONFIGURATION_GAGNANTE) {
+			jetons[1] = 0;
+		}
 	}
 
 	/* si une des quatres "lignes" possibles contient
