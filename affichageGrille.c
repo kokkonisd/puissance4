@@ -3,7 +3,7 @@
 #include "affichageGrille.h"
 
 // affiche une seule case avec le couleur specifie en argument
-void afficherCase(int couleur)
+void afficherCase (int couleur)
 {
 	switch(couleur) {
 		case CASE_JAUNE:
@@ -21,7 +21,7 @@ void afficherCase(int couleur)
 }
 
 // affiche la grille en entier
-void afficherGrille(void)
+void afficherGrille (void)
 {
 	int i, j;
 	for (i = DECALAGE; i < (DECALAGE + NB_LIG_GRILLE_VUES); i++) {

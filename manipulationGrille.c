@@ -16,7 +16,7 @@ int nbDeJetonsColonne (int numColonne)
 }
 
 // ajoute un jeton à la grille
-void ajouterJeton(int choixJoueur)
+void ajouterJeton (int choixJoueur)
 {
 	int jeton;
 

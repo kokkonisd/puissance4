@@ -111,7 +111,7 @@ bool estCoupGagnant (int choixJoueur)
 
 
 // jouer une partie de puissance4
-int jouerPartiePuissance4(void)
+int jouerPartiePuissance4 (void)
 {
 	/* variable qui détermine si, à la fin de la partie,
 	il y avait un coup gagnant ou pas */
