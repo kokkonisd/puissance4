@@ -2,6 +2,7 @@
 #include "main.h"
 #include "affichageGrille.h"
 
+// affiche une seule case avec le couleur specifie en argument
 void afficherCase(int couleur)
 {
 	switch(couleur) {
@@ -19,6 +20,7 @@ void afficherCase(int couleur)
 	}
 }
 
+// affiche la grille en entier
 void afficherGrille(void)
 {
 	int i, j;
