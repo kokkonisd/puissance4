@@ -7,10 +7,10 @@ void afficherCase (int couleur)
 {
 	switch(couleur) {
 		case CASE_JAUNE:
-			printf("[%c]", CHAR_JAUNE);
+			printf("[\e[1;33m%c\e[0m]", CHAR_JAUNE);
 			break;
 		case CASE_ROUGE:
-			printf("[%c]", CHAR_ROUGE);
+			printf("[\e[1;31m%c\e[0m]", CHAR_ROUGE);
 			break;
 		case CASE_VIDE:
 			printf("[%c]", CHAR_VIDE);

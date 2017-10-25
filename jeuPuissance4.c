@@ -5,6 +5,8 @@
 #include "affichageGrille.h"
 #include "manipulationGrille.h"
 
+char *joueurs[] = {"\e[1;33mJoueur 1\e[0m", "\e[1;31mJoueur 2\e[0m"};
+
 // retourne true si le coup est invalide, false autrement
 bool estCoupInvalide (int colonneJouee)
 {
@@ -25,7 +27,7 @@ int jouerCoupPuissance4 (void)
 
 	// verifier que l'entrée est valide
 	do {
-		printf("Joueur %d> ", (coups_joues % 2) + 1);
+		printf("%s> ", joueurs[(coups_joues % 2)]);
 		scanf("%d", &choix);
 	} while (estCoupInvalide(choix - 1) || (choix <= 0) || (choix > NB_COL_GRILLE_VUES));
 
@@ -126,7 +128,7 @@ int jouerPartiePuissance4 (void)
 		if (estCoupGagnant(choix - 1)) {
 			// on affiche la grille et on annonce le vainqueur
 			afficherGrille();
-			printf("Joueur %d a gagné !\n", ((coups_joues + 1) % 2) + 1);
+			printf("%s a gagné !\n", joueurs[(coups_joues + 1) % 2]);
 			// on a un coup gagnant
 			gagne = true;
 			// le jeu est terminé
