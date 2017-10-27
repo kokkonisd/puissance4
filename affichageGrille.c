@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "main.h"
 #include "affichageGrille.h"
+#include "manipulationGrille.h"
 
 // affiche une seule case avec le couleur specifie en argument
 void afficherCase (int couleur)
@@ -24,9 +25,9 @@ void afficherCase (int couleur)
 void afficherGrille (void)
 {
 	int i, j;
-	for (i = DECALAGE; i < (DECALAGE + NB_LIG_GRILLE_VUES); i++) {
-		for (j = DECALAGE; j < (DECALAGE + NB_COL_GRILLE_VUES); j++) {
-			afficherCase(grille[i][j]);
+	for (i = 0; i < NB_LIG_GRILLE_VUES; i++) {
+		for (j = 0; j < NB_COL_GRILLE_VUES; j++) {
+			afficherCase(demanderCouleurDeLaCaseXY(j, i));
 		}
 		printf("\n");
 	}
