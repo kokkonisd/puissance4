@@ -1,1 +1,1 @@
-extern int jouerPartiePuissance4(void);
+extern int jouerPartiePuissance4 (void);

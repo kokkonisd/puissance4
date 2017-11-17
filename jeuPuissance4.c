@@ -5,7 +5,7 @@
 #include "affichageGrille.h"
 #include "manipulationGrille.h"
 
-char *joueurs[] = {"\e[1;33mJoueur 1\e[0m", "\e[1;31mJoueur 2\e[0m"};
+char *joueurs[] = { "\e[1;33mJoueur 1\e[0m", "\e[1;31mJoueur 2\e[0m" };
 
 // retourne true si le coup est invalide, false autrement
 bool estCoupInvalide (int colonneJouee)
@@ -53,7 +53,7 @@ bool estCoupGagnant (int choixJoueur)
 	1 : haut -> bas
 	2 : diagonale-haut-gauche -> diagonale-bas-droite
 	3 : diagonale-bas-gauche -> diagonale-haut-droite */
-	int jetons[] = {0, 0, 0, 0};
+	int jetons[] = { 0, 0, 0, 0 };
 	int i;
 	
 	// pour les diagonales

@@ -2,4 +2,4 @@
 #define CHAR_ROUGE '+'
 #define CHAR_VIDE ' '
 
-extern void afficherGrille(void);
+extern void afficherGrille (void);

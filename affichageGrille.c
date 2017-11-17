@@ -6,7 +6,7 @@
 // affiche une seule case avec le couleur specifie en argument
 void afficherCase (int couleur)
 {
-	switch(couleur) {
+	switch (couleur) {
 		case CASE_JAUNE:
 			printf("[\e[1;33m%c\e[0m]", CHAR_JAUNE);
 			break;
